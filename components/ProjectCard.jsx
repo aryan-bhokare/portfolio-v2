@@ -4,11 +4,8 @@ import Link from "next/link";
 import discord from "@/public/work/discord.svg";
 import codecraft from "@/public/work/codecraft.jpg";
 import twitter from "@/public/twitter.svg";
-import portfolio from "@/public/work/portfolio.jpg";
 import resume from "@/public/work/resume.svg";
-import redeye from "@/public/work/red-eye.jpg";
 import recruitapp from "@/public/work/recruitapp.svg";
-import notion from "@/public/work/notion.jpg";
 import airplane from "@/public/work/airplane.svg";
 
 const ProjectCard = () => {
