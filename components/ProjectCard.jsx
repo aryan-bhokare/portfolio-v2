@@ -15,7 +15,7 @@ const ProjectCard = () => {
       image: discord,
       title: "SyncSpot",
       description: "Communication app with features like chatting, video streaming and audio streaming through channels",
-      link: "https://aizen.netlify.app/",
+      link: "https://github.com/aryan-bhokare/syncspot",
       target: "_self",
     },
     {
@@ -23,7 +23,7 @@ const ProjectCard = () => {
       image: codecraft,
       title: "CodeCraft",
       description: "A Online Platform for running your code just as you do in local environment",
-      link: "https://kamui-kanban.netlify.app/",
+      link: "https://github.com/aryan-bhokare/codecraft",
       target: "_self",
     },
     {
@@ -31,7 +31,7 @@ const ProjectCard = () => {
       image: twitter,
       title: "Jitter",
       description: "Twitter clone with all twitter funcionalities",
-      link: "https://pokedex-polly.netlify.app/",
+      link: "https://github.com/aryan-bhokare/twitter-clone",
       target: "_self",
     },
     {
@@ -39,7 +39,7 @@ const ProjectCard = () => {
       image: resume,
       title: "YourResume",
       description: "Resume maker application with dynamic configuration",
-      link: "https://evogymm.netlify.app/",
+      link: "https://yourxresume.netlify.app",
       target: "_blank",
     },
     {
@@ -47,7 +47,7 @@ const ProjectCard = () => {
       image: airplane,
       title: "Airline Management",
       description: "Airline Management Backend with Microservices",
-      link: "https://nikestore-polly.netlify.app/",
+      link: "https://github.com/aryan-bhokare/FlightsAndSearchService",
       target: "_blank",
     },
     {
@@ -55,7 +55,7 @@ const ProjectCard = () => {
       image: recruitapp,
       title: "RecuitApp",
       description: "Employee Recruitment App prototype",
-      link: "https://potion-write.vercel.app/",
+      link: "https://recruit1app.netlify.app",
       target: "_blank",
     },
   ];
