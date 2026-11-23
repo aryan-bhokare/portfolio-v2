@@ -1,74 +1,87 @@
-import React from "react";
+import SectionLabel from "./SectionLabel";
+
+const data = [
+  {
+    id: 0,
+    title: "Software Development Engineer",
+    duration: "Sep 2024 — Present",
+    org: "Aventior, Pune",
+    current: true,
+    note: "Solely architected Kyper's backend; led the backend for Foozi v2 (AI coaching).",
+    skills: ["Python", "FastAPI", "Redis", "PostgreSQL", "GraphQL", "AWS", "LangGraph"],
+  },
+  {
+    id: 1,
+    title: "Software Engineering Intern",
+    duration: "May 2024 — Sep 2024",
+    org: "IntelOwl · Google Summer of Code 2024",
+    note: "Shipped the IP2Location.io analyzer for IP/domain geolocation intelligence.",
+    skills: ["Python", "Django", "React", "GitHub Actions"],
+  },
+  {
+    id: 2,
+    title: "Software Engineering Intern",
+    duration: "Mar 2024 — May 2024",
+    org: "LitmusChaos · LFX Mentorship (CNCF)",
+    note: "Hardened auth in Go (−60% unauthorized attempts) and cut API latency 25%.",
+    skills: ["Go", "GraphQL", "MongoDB", "Kubernetes"],
+  },
+  {
+    id: 3,
+    title: "Web Development Lead",
+    duration: "Aug 2023 — Apr 2024",
+    org: "Google Developer Student Clubs",
+    note: "Led web dev for the campus chapter; built and mentored on React projects.",
+    skills: ["JavaScript", "React", "Node.js", "MongoDB"],
+  },
+];
 
 const TimeLine = () => {
-  const data = [
-    {
-      id: 0,
-      title: "Google Summer of Code Mentee",
-      duration: "May 2024",
-      org: "IntelOwl (HoneyNet Project)",
-      skills: ["Python", "Django", "Github Actions", "Swagger", "Markdown", "Github Pages"],
-      class:
-        "bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300",
-    },
-    {
-      id: 1,
-      title: "Linux Foundation Mentee",
-      duration: "Mar 2024 - May 2024",
-      org: "LitmusChaos",
-      skills: ["Golang", "Docker", "Kubernetes", "JavaScript", "React.js", "MongoDB"],
-      class:
-        "bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300",
-    },
-    {
-      id: 2,
-      title: "Web Development Lead",
-      duration: "Aug 2023 - Apr 2024",
-      org: "Google Developer Student Clubs",
-      skills: ["JavaScript", "React.js", "Node.js", "MongoDB"],
-      class:
-        "bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300",
-    }
-  ];
   return (
-    <div>
-      <ol className="relative border-s border-gray-200 dark:border-gray-700">
+    <section
+      id="timeline"
+      className="mx-auto max-w-5xl px-6 py-24 sm:px-10 lg:px-6"
+    >
+      <SectionLabel tag="timeline" title="Where I've worked" />
+
+      <ol className="relative ml-1 border-l border-line-l dark:border-line-d">
         {data.map((item) => (
-          <li className="mb-10 ms-6" key={item.id}>
-            <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-              <svg
-                className="w-2.5 h-2.5 text-blue-800 dark:text-blue-300"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-              </svg>
-            </span>
-            <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-              {item.title}{" "}
-              {item.id === 0 && (
-                <span className="bg-red-500 text-[#fff] text-sm font-medium me-2 px-2.5 py-0.5 border-sky-100 rounded ms-3">
-                  Latest
+          <li key={item.id} className="mb-11 ml-7 last:mb-0">
+            <span
+              className={`absolute -left-[7px] mt-1.5 h-3.5 w-3.5 rounded-full border-2 ${
+                item.current
+                  ? "border-accent bg-accent"
+                  : "border-line-l bg-paper dark:border-line-d dark:bg-ink"
+              }`}
+            />
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <h3 className="font-syne text-lg font-bold">{item.title}</h3>
+              {item.current && (
+                <span className="rounded-md bg-emerald-500/15 px-2 py-0.5 font-mono text-[0.65rem] text-emerald-600 dark:text-emerald-400">
+                  current
                 </span>
               )}
-            </h3>
-            <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-              {item.duration}
-            </time>
-            <p>{item.org}</p>
-            <div className="flex flex-wrap mt-8">
-              {item.skills.map((i, idx) => (
-                <span key={idx} className={`${item.class}`}>
-                  {i}
+            </div>
+            <div className="mt-0.5 font-mono text-xs text-muted dark:text-muted-dark">
+              {item.duration} · {item.org}
+            </div>
+            <p className="mt-2 max-w-xl text-[0.95rem] leading-relaxed text-muted dark:text-muted-dark">
+              {item.note}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {item.skills.map((s) => (
+                <span
+                  key={s}
+                  className="rounded-md border border-line-l px-2 py-0.5 font-mono text-[0.7rem] text-txt/70 dark:border-line-d dark:text-txt-dark/70"
+                >
+                  {s}
                 </span>
               ))}
             </div>
           </li>
         ))}
       </ol>
-    </div>
+    </section>
   );
 };
 

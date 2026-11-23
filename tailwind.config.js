@@ -7,7 +7,30 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        ink: "#0b0d17",
+        "ink-700": "#141829",
+        "ink-600": "#1b2038",
+        paper: "#f4f5f8",
+        accent: "#7c6cff",
+        "accent-deep": "#5b4bdb",
+        signal: "#f6b352",
+        "line-d": "#262c46",
+        "line-l": "#e4e5ee",
+        txt: "#171a2b",
+        "txt-dark": "#e9eaf2",
+        muted: "#5f6579",
+        "muted-dark": "#8a90a8",
+      },
       keyframes: {
+        reveal: {
+          "0%": { opacity: "0", transform: "translateY(14px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        pulse2: {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.35", transform: "scale(0.82)" },
+        },
         text: {
           "0%, 100%": {
             "background-size": "200% 200%",
@@ -75,6 +98,8 @@ module.exports = {
         },
       },
       animation: {
+        reveal: "reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
+        pulse2: "pulse2 2.4s ease-in-out infinite",
         text: "text 5s ease infinite",
         mainBlob1: "mainBlob 12s ease infinite",
         mainBlob2: "mainBlob2 8s ease alternate-reverse infinite",
@@ -86,6 +111,9 @@ module.exports = {
       },
 
       fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        mono: ["Space Mono", "ui-monospace", "monospace"],
         space: ["Space Mono", "monospace", "sans-serif"],
         deca: ["Lexend Deca", "Inter", "sans-serif"],
         app: ["Homemade Apple", "cursive"],

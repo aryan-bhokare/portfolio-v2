@@ -7,28 +7,39 @@
 }
 
 *::selection {
-  @apply bg-[#00FFFF] dark:bg-[#f81ce5];
+  @apply bg-accent/25 text-txt dark:text-txt-dark;
+}
+
+html {
+  scroll-padding-top: 6rem;
 }
 
 ::-webkit-scrollbar {
-  /* height: 10px; */
-  /* border-radius: 1px solid #d5d5d5; */
-  @apply h-2 w-[12px] rounded-sm border-gray-100/20;
+  @apply h-2 w-[10px];
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-rose-200/20 w-20;
+  @apply bg-transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-purple-400/50 rounded-[4px];
+  @apply bg-accent/40 rounded-full;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-purple-400;
+  @apply bg-accent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 @layer base {
@@ -115,13 +126,68 @@
 
   .land::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0px;
     z-index: -100;
-    background-image: url("/header-gradient.svg"), url("/footer-gradient.svg");
+    background-image: radial-gradient(
+        closest-side at 72% -5%,
+        rgba(124, 108, 255, 0.14),
+        transparent 70%
+      ),
+      radial-gradient(
+        closest-side at 10% 8%,
+        rgba(246, 179, 82, 0.08),
+        transparent 65%
+      );
     background-repeat: no-repeat;
-    background-position: center top, center bottom;
-    background-size: 1400px;
+  }
+
+  .dark .land::before {
+    background-image: radial-gradient(
+        closest-side at 75% -8%,
+        rgba(124, 108, 255, 0.22),
+        transparent 72%
+      ),
+      radial-gradient(
+        closest-side at 5% 10%,
+        rgba(246, 179, 82, 0.1),
+        transparent 60%
+      );
+  }
+
+  /* faint engineering grid, sits above the glow */
+  .land::after {
+    content: "";
+    position: fixed;
+    inset: 0px;
+    z-index: -99;
+    pointer-events: none;
+    background-image: linear-gradient(
+        to right,
+        rgba(23, 26, 43, 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(23, 26, 43, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(
+      ellipse 100% 60% at 50% 0%,
+      #000 30%,
+      transparent 80%
+    );
+  }
+
+  .dark .land::after {
+    background-image: linear-gradient(
+        to right,
+        rgba(138, 144, 168, 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(138, 144, 168, 0.07) 1px, transparent 1px);
+  }
+
+  .hairline {
+    @apply border-line-l dark:border-line-d;
   }
 
   .land2::before {

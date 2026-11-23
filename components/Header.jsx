@@ -1,155 +1,150 @@
-/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useRef } from "react";
-
-import { useRouter } from "next/router";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+import { FiArrowUpRight } from "react-icons/fi";
 
 import aryan_header_black from "@/public/aryan_dark.png";
 import aryan_header_white from "@/public/aryan_white.png";
 
+const navLinks = [
+  { name: "work", link: "#work" },
+  { name: "timeline", link: "#timeline" },
+  { name: "stack", link: "#stack" },
+  { name: "contact", link: "#contact" },
+];
+
 const Header = () => {
   const { systemTheme, theme, setTheme } = useTheme();
-  const router = useRouter().asPath;
   const [mounted, setMounted] = useState(false);
-  let Links = [
-    { name: "timeline", link: "/timeline" },
-    { name: "work", link: "/work" },
-    { name: "tech", link: "/tech" },
-    { name: "resume", link: "/AryanResumeSDE.pdf" },
-
-  ];
   const [isScrolled, setIsScrolled] = useState(false);
-  let [open, setOpen] = useState(false);
-  const touchRef = useRef();
-  const clickHandler = (link) => {
-    if (router != link) {
-      setTimeout(() => {
-        setOpen(false);
-      }, 700);
-    }
-  };
-  const useOutsideAlerter = (ref) => {
-    useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setOpen(false);
-        }
-      }
-      // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  };
-  useOutsideAlerter(touchRef);
+  const [open, setOpen] = useState(false);
+  const navRef = useRef();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 70) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
     setMounted(true);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setOpen(false);
+    };
     window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   if (!mounted) return null;
   const currentTheme = theme === "system" ? systemTheme : theme;
+
   return (
     <nav
-      ref={touchRef}
-      className={`${isScrolled && "bg-opacity-[0.5] shadow-md drop-shadow-lg "
-        } font-medium duration-500 bg-opacity-50 transition-all linear z-40 dark:text-white w-[75%] sm:w-[75%] md:w-[70%] lg:w-[55%] xl:w-[50%] max-w-6xl mx-auto  bg-white dark:bg-[#35353579] ${open && "dark:bg-[#000] bg-opacity-100"
-        } drop-shadow-xs backdrop-blur-sm top-4 sticky rounded-2xl`}
+      ref={navRef}
+      className={`sticky top-4 z-40 mx-auto mt-4 w-[92%] max-w-3xl rounded-2xl border backdrop-blur-md transition-all duration-300 ${
+        isScrolled
+          ? "border-line-l bg-white/80 shadow-lg shadow-black/5 dark:border-line-d dark:bg-ink-700/80"
+          : "border-transparent bg-white/40 dark:bg-ink-700/30"
+      }`}
     >
-      <div className="flex justify-between md:space-x-10 lg:space-x-12 xl:space-x-16 md:flex items-center place-items-center md:justify-center py-3 md:px-10 px-8">
-        <div className="select-none order-2 md:order-1 cursor-pointer flex items-center text-gray-800">
-          <Link href={"/"} className="">
-            {currentTheme === "dark" ? (
-              <Image src={aryan_header_white} alt="header" width="100" />
-            ) : (
-              <Image src={aryan_header_black} alt="header" width="100" />
-            )}
-          </Link>
-        </div>
-        {currentTheme === "dark" ? (
-          <button
-            onClick={() => {
-              setTheme("light");
-            }}
-            className="w-max md:order-8 fill-purple-600 "
-          >
-            <MdOutlineLightMode className="w-4 h-4 " />{" "}
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              setTheme("dark");
-            }}
-            className="w-max md:order-8 fill-purple-600 "
-          >
-            <MdOutlineDarkMode className="w-4 h-4" />{" "}
-          </button>
-        )}
+      <div className="flex items-center justify-between px-5 py-2.5">
+        <Link href="#top" className="select-none">
+          <Image
+            src={currentTheme === "dark" ? aryan_header_white : aryan_header_black}
+            alt="Aryan Bhokare"
+            width={88}
+            priority
+          />
+        </Link>
 
-        <div
-          onClick={() => setOpen(!open)}
-          className="transition-all duration-500 ease-in order-3 text-lg flex flex-col space-y-[0.2rem]  cursor-pointer items-center font-semibold md:hidden"
-        >
-          <div
-            className={` ${open && "rotate-45 translate-y-[5px] "
-              } relative rounded-xl origin-center transition-all duration-500 ease-in w-4 h-[0.1125rem] dark:bg-white/70 dark:text-white/70 fill-black text-black bg-black`}
-          ></div>
-          <div
-            className={` ${open && "opacity-0 translate-x-20"
-              } relative rounded-xl origin-center transition-all duration-1000 ease-in-out w-4 h-[0.1rem] dark:bg-white/70 dark:text-white/70 fill-black text-black bg-black `}
-          ></div>
-          <div
-            className={` ${open && "-rotate-45 -translate-y-[5px]"
-              } relative rounded-xl origin-center transition-all duration-500 ease-in w-4 h-[0.1125rem] dark:bg-white/70 dark:text-white/70 fill-black text-black bg-black`}
-          ></div>
-        </div>
-        <ul
-          className={` rounded-3xl md:rounded-none  ${open ? "dark:bg-[#000]" : "dark:bg-[#35353500]"
-            } bg-white  py-4 md:py-0 md:bg-inherit font-semibold order-4 md:flex md:items-center md:pb-0 pb-8 absolute md:static bg-light-blue md:bg-none md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 lg:transition-none transition-all duration-500 ease-in ${open ? "top-[3.5rem]" : "top-[-490px]"
-            }`}
-        >
-          {Links.map((link) => (
-            <li key={link.name} className="md:ml-8 text-base md:my-0 my-7">
+        <ul className="hidden items-center gap-7 md:flex">
+          {navLinks.map((l) => (
+            <li key={l.name}>
               <Link
-                href={link.link}
-                onClick={() => clickHandler(`${link.name}`)}
-                className={`${router === link.link
-                  ? " text-purple-400 font-out"
-                  : " text-gray-700 dark:text-white font-out"
-                  } hover:text-purple-500 dark:hover:text-purple-500 duration-500`}
+                href={l.link}
+                className="font-mono text-sm text-muted transition-colors hover:text-accent dark:text-muted-dark dark:hover:text-accent"
               >
-                <span>
-                  {link.name}
-                  {link.name === "timeline" && (
-                    <sup className="font-semibold text-[8px] border-sky-100 rounded bg-red-600 px-1 text-white">
-                      1
-                    </sup>
-                  )}
-                </span>
+                {l.name}
               </Link>
             </li>
           ))}
         </ul>
+
+        <div className="flex items-center gap-2">
+          <Link
+            href="/AryanResumeSDE.pdf"
+            target="_blank"
+            className="hidden items-center gap-1 rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-accent-deep sm:inline-flex"
+          >
+            résumé
+            <FiArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
+
+          <button
+            aria-label="Toggle theme"
+            onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
+            className="rounded-lg p-2 text-muted transition-colors hover:text-accent dark:text-muted-dark"
+          >
+            {currentTheme === "dark" ? (
+              <MdOutlineLightMode className="h-4 w-4" />
+            ) : (
+              <MdOutlineDarkMode className="h-4 w-4" />
+            )}
+          </button>
+
+          {/* mobile menu toggle */}
+          <button
+            aria-label="Menu"
+            onClick={() => setOpen(!open)}
+            className="flex h-8 w-8 flex-col items-center justify-center gap-1 md:hidden"
+          >
+            <span
+              className={`h-[2px] w-4 bg-txt transition-all dark:bg-txt-dark ${
+                open ? "translate-y-[6px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-4 bg-txt transition-all dark:bg-txt-dark ${
+                open ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-4 bg-txt transition-all dark:bg-txt-dark ${
+                open ? "-translate-y-[6px] -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
       </div>
+
+      {/* mobile dropdown */}
+      {open && (
+        <ul className="flex flex-col gap-1 border-t border-line-l px-5 py-4 dark:border-line-d md:hidden">
+          {navLinks.map((l) => (
+            <li key={l.name}>
+              <Link
+                href={l.link}
+                onClick={() => setOpen(false)}
+                className="block py-2 font-mono text-sm text-muted hover:text-accent dark:text-muted-dark"
+              >
+                {l.name}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link
+              href="/AryanResumeSDE.pdf"
+              target="_blank"
+              onClick={() => setOpen(false)}
+              className="block py-2 font-mono text-sm text-accent"
+            >
+              résumé ↗
+            </Link>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 };

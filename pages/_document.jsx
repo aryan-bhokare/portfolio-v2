@@ -8,40 +8,37 @@ export default function Document() {
       lang="en"
     >
       <Head>
-        <meta name="title" content="aryan ✦ developer, engineer" />
-        <meta name="description" content="Developer // Engineer // Weeb" />
+        <meta
+          name="title"
+          content="Aryan Bhokare — Backend & AI Engineer"
+        />
+        <meta
+          name="description"
+          content="Aryan Bhokare — full-stack engineer, backend-deep. I build distributed systems and AI infrastructure: Redis session stores, job queues, RAG and multi-agent pipelines."
+        />
 
-        {/* <!-- Open Graph / Facebook --> */}
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="aryan ✦ developer, Engineer" />
+        <meta property="og:url" content="https://aryanbhokare.netlify.app" />
+        <meta
+          property="og:title"
+          content="Aryan Bhokare — Backend & AI Engineer"
+        />
         <meta
           property="og:description"
-          content="Developer // Engineer // Weeb"
-        />
-        <meta
-          property="og:image"
+          content="Full-stack engineer, backend-deep. Distributed systems and AI infrastructure."
         />
 
-        {/* <!-- Twitter --> */}
+        {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta
-          property="twitter:url"
-        />
-        <meta
           property="twitter:title"
-          content="aryan ✦ developer, engineer"
+          content="Aryan Bhokare — Backend & AI Engineer"
         />
         <meta
           property="twitter:description"
-          content="Developer // Engineer // Weeb"
+          content="Full-stack engineer, backend-deep. Distributed systems and AI infrastructure."
         />
-        <meta
-          property="twitter:image"
-        />
-
-
-
-        <meta property="og:type" content="website" />
 
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -83,7 +80,7 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="back font-out mx-auto bg-[#fffdfd] dark:bg-[#000000] overflow-x-hidden lg:transform-gpu ">
+      <body className="back font-inter text-txt dark:text-txt-dark mx-auto bg-paper dark:bg-ink overflow-x-hidden lg:transform-gpu ">
         <Main />
         <NextScript />
       </body>
