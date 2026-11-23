@@ -98,7 +98,7 @@ const earlier = [
 const Projects = () => {
   return (
     <section id="work" className="mx-auto max-w-5xl px-6 py-24 sm:px-10 lg:px-6">
-      <SectionLabel tag="work" title="Things I've shipped" />
+      <SectionLabel tag="work" title="Things I've built" />
 
       {/* flagship feature cards */}
       <div className="space-y-5">
