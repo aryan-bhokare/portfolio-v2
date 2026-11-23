@@ -3,7 +3,7 @@ import Link from "next/link";
 import { HiArrowDownRight } from "react-icons/hi2";
 import { FiArrowUpRight } from "react-icons/fi";
 
-import Avatar from "@/public/aryanpfphd.png";
+import Avatar from "@/public/aryan-profile.jpeg";
 
 // Professional experience, counted from the Aventior start date.
 const START = new Date(2024, 8); // Sep 2024 (month is 0-indexed)
