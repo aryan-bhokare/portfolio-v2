@@ -80,7 +80,7 @@ const Hero = () => {
               <HiArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
             </Link>
             <Link
-              href="/AryanResumeSDE.pdf"
+              href="/Aryan_Bhokare_Resume.pdf"
               target="_blank"
               className="inline-flex items-center gap-2 rounded-xl border border-line-l bg-white/60 px-5 py-2.5 text-sm font-semibold text-txt backdrop-blur-sm transition-colors hover:border-accent hover:text-accent dark:border-line-d dark:bg-white/[0.03] dark:text-txt-dark dark:hover:border-accent dark:hover:text-accent"
             >

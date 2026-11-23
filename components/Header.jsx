@@ -74,7 +74,7 @@ const Header = () => {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/AryanResumeSDE.pdf"
+            href="/Aryan_Bhokare_Resume.pdf"
             target="_blank"
             className="hidden items-center gap-1 rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-accent-deep sm:inline-flex"
           >
@@ -135,7 +135,7 @@ const Header = () => {
           ))}
           <li>
             <Link
-              href="/AryanResumeSDE.pdf"
+              href="/Aryan_Bhokare_Resume.pdf"
               target="_blank"
               onClick={() => setOpen(false)}
               className="block py-2 font-mono text-sm text-accent"
