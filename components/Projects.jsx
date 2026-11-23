@@ -16,6 +16,15 @@ const GH = "https://github.com/aryan-bhokare?tab=repositories";
 
 const flagships = [
   {
+    title: "Ultron",
+    status: "In development",
+    blurb:
+      "A cloud-native harness that runs many autonomous coding agents concurrently, each sandboxed in its own Kubernetes Job. A Go control plane — API, Postgres state machine, scheduler, and SSE stream hub — drives Jobs via client-go and streams each agent's reasoning, terminal output, and diffs live. The headline is AI; the engineering is distributed systems: strong isolation, a scheduler stable past 100 concurrent sandboxes, sub-5s cold-start, and at-least-once execution.",
+    demonstrates: "K8s orchestration & schedulers",
+    stack: ["Go", "Kubernetes", "Helm", "client-go", "PostgreSQL", "SSE", "Python"],
+    link: GH,
+  },
+  {
     title: "Distributed Job Queue",
     blurb:
       "A Redis Streams job system with producer–consumer workers, delayed jobs, retries and dead-letter queues. Idempotent workers recover via heartbeat monitoring, and a dashboard exposes queue depth, throughput and latency.",
@@ -104,6 +113,11 @@ const Projects = () => {
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3">
                   <h3 className="font-syne text-2xl font-bold">{p.title}</h3>
+                  {p.status && (
+                    <span className="rounded-md bg-signal/15 px-2 py-0.5 font-mono text-[0.65rem] text-signal">
+                      {p.status}
+                    </span>
+                  )}
                   <FiArrowUpRight className="h-5 w-5 text-muted transition-all group-hover:text-accent dark:text-muted-dark" />
                 </div>
                 <p className="mt-3 text-[0.97rem] leading-relaxed text-muted dark:text-muted-dark">
