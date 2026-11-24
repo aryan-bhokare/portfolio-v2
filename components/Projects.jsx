@@ -40,14 +40,6 @@ const flagships = [
     stack: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Redis", "Docker"],
     link: GH,
   },
-  {
-    title: "Multi-Agent AI Research Assistant",
-    blurb:
-      "A LangGraph workflow of Planner, Researcher, Reviewer and Writer agents over shared memory, with MCP tool integration, RAG + reranking, streaming responses, and swappable providers (OpenAI / Claude / Ollama).",
-    demonstrates: "Agent orchestration",
-    stack: ["LangGraph", "MCP", "pgvector", "Redis", "Docker"],
-    link: GH,
-  },
 ];
 
 const earlier = [
